@@ -9,8 +9,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: const [],
+        body: GridView.count(
+          crossAxisCount: 4,
         ),
       ),
     );
