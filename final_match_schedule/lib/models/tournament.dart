@@ -1,5 +1,3 @@
-
-
 class Tournament {
   final List<Match> matches;
 
