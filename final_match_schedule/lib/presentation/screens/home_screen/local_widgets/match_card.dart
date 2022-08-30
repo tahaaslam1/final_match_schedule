@@ -24,7 +24,7 @@ class MatchCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF000000).withOpacity(0.60),
-            blurRadius: 4.r,
+            blurRadius: 4,
             spreadRadius: 0,
             offset: const Offset(0.0, 1.0), // shadow direction: bottom right
           )
@@ -36,50 +36,50 @@ class MatchCard extends StatelessWidget {
         ),
       ),
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
             child: Text(
               matchGroup,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 12.sp,
+              ),
             ),
           ),
-          SizedBox(height: 11.h),
-          Center(
-            child: Text(
-              homeTeam,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
-            ),
-          ),
-          SizedBox(height: 1.h),
-          Divider(
-            color: Color(0xFFFFAF00),
-            height: 2.0.h,
-            indent: 20,
-            thickness: 2,
-            endIndent: 20,
-          ),
-          SizedBox(height: 1.h),
-          Center(
-            child: Text(
-              awayTeam,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
-            ),
-          ),
-          SizedBox(height: 2.h),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-                child: Text(
-                  matchTime,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
-                ),
+              Column(
+                children: [
+                  Text(
+                    homeTeam,
+                    style:
+                        TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
+                  ),
+                  Container(
+                    width: 32,
+                    height: 2.h, // Thickness
+                    color: const Color(0xFFFFAF00),
+                  ),
+                  Text(
+                    awayTeam,
+                    style:
+                        TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
+                  ),
+                ],
               ),
             ],
+          ),
+          SizedBox(height: 2.h),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              matchTime,
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
+            ),
           )
         ],
       ),
