@@ -1,11 +1,13 @@
+import 'package:final_match_schedule/constants.dart';
+import 'package:final_match_schedule/models/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchCard extends StatelessWidget {
-  final String matchGroup;
+  final Group matchGroup;
   final String homeTeam;
   final String awayTeam;
-  final String matchTime;
+  final DateTime matchTime;
 
   const MatchCard({
     Key? key,
@@ -23,14 +25,12 @@ class MatchCard extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF000000).withOpacity(0.60),
+            color: Styles.containerShadowColor.withOpacity(0.60),
             blurRadius: 4,
-            spreadRadius: 0,
-            offset: const Offset(0.0, 1.0), // shadow direction: bottom right
+            offset: const Offset(0.0, 1.0),
           )
         ],
-        color: Colors.white,
-        border: Border.all(color: Colors.white),
+        color: Styles.matchCardBackgroundColor,
         borderRadius: BorderRadius.all(
           Radius.circular(4.r),
         ),
@@ -42,7 +42,7 @@ class MatchCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
             child: Text(
-              matchGroup,
+              matchGroup.name,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 12.sp,
@@ -60,9 +60,9 @@ class MatchCard extends StatelessWidget {
                         TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                   ),
                   Container(
-                    width: 32,
+                    width: 37.w,
                     height: 2.h, // Thickness
-                    color: const Color(0xFFFFAF00),
+                    color: Styles.matchCardDividerColor,
                   ),
                   Text(
                     awayTeam,
@@ -74,11 +74,14 @@ class MatchCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 2.h),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Text(
-              matchTime,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
+          Padding(
+            padding: EdgeInsets.only(right: 3.0.w, bottom: 2.0.h),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                matchTime.hour.toString(),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
+              ),
             ),
           )
         ],

@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DateCard extends StatelessWidget {
+
+  final DateTime matchDateTime; 
   const DateCard({
-    Key? key,
+    Key? key, required this.matchDateTime,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 65.h,
+      height: 70.h,
       width: 71.w,
       decoration: BoxDecoration(
         border: Border(

@@ -10,7 +10,8 @@ class Styles {
   static const primaryTextColor = Color(0xFF404040);
   static const secondaryTextColor = Color(0xFFFFFFFF);
   static const gridLineColor = Color(0xFFDEDEDE);
-  
+  static const containerShadowColor = Color(0xFF000000);
+  static const matchCardBackgroundColor = Color(0xFFFFFFFF);
 
   static final TextStyle dateCardTextStyle = TextStyle(
     color: Styles.primaryTextColor,
