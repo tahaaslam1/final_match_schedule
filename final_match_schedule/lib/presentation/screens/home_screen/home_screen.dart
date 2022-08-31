@@ -1,15 +1,18 @@
 import 'package:final_match_schedule/constants.dart';
 import 'package:final_match_schedule/presentation/screens/home_screen/local_widgets/date_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'local_widgets/match_card.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
+
         backgroundColor: Styles.backgroundColor,
         body: CustomScrollView(
           slivers: [
