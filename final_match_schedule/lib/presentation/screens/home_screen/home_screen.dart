@@ -17,10 +17,32 @@ class HomeScreen extends StatelessWidget {
             SliverFillRemaining(
               hasScrollBody: false,
               child: Row(
+                //TODO : yahan bhi listview.builder chayiee.. for SideBar.....
                 children: [
                   Expanded(
                     child: Column(
+                      //TODO : YAHAN is colunm ka children listview.builder ......
                       children: [
+                        Row(
+                          children: [
+                            DateCard(
+                              matchDateTime: DateTime.now(),
+                            ),
+                            const MatchList(
+                              matches: [],
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            DateCard(
+                              matchDateTime: DateTime.now(),
+                            ),
+                            const MatchList(
+                              matches: [],
+                            ),
+                          ],
+                        ),
                         Row(
                           children: [
                             DateCard(
