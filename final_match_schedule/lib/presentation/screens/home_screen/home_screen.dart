@@ -1,3 +1,5 @@
+import 'package:final_match_schedule/constants.dart';
+import 'package:final_match_schedule/presentation/screens/home_screen/local_widgets/date_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,157 +10,89 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Row(
-          children: [
-            Expanded(
-              child: Column(
+        backgroundColor: Styles.backgroundColor,
+        body: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Row(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 65.h,
-                        width: 71.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          border: Border(
-                            right: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 65.h,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.black,
-                                width: 3.0,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const DateCard(),
+                            Expanded(
+                              child: Container(
+                                height: 65.h,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Styles.gridLineColor,
+                                      width: 3.0.w,
+                                    ),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 8.0.w,
+                                    top: 4.0.h,
+                                    bottom: 4.0.h,
+                                  ),
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      Container(
+                                        height: 52.h,
+                                        width: 70.w,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(
+                                        width: 10.0.w,
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 65.h,
-                        width: 71.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          border: Border(
-                            right: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 65.h,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.black,
-                                width: 3.0,
+                  Container(
+                    color: Styles.sideBarBackgroundColor,
+                    width: 35.0.w,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 8.0.h),
+                        RotatedBox(
+                          quarterTurns: 1,
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'Taha Aslam',
+                              style: TextStyle(
+                                color: Styles.secondaryTextColor,
+                                fontSize: 14.sp,
+                                fontFamily: 'Ubuntu',
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.normal,
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 65.h,
-                        width: 71.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          border: Border(
-                            right: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                          ),
+                        SizedBox(height: 8.0.h),
+                        Expanded(
+                          child: Container(
+                              width: 6.0.w, color: Styles.sideBarLineColor),
                         ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 65.h,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.black,
-                                width: 3.0,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 65.h,
-                        width: 71.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.amber,
-                          border: Border(
-                            right: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.black,
-                              width: 3.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 65.h,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.black,
-                                width: 3.0,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
-            Container(
-              color: Colors.black,
-              width: 35.0.w,
             ),
           ],
         ),
