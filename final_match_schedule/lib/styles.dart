@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class Styles {
   static const backgroundColor = Color(0xFFEDEDED);
   static const sideBarBackgroundColor = Color(0xFF840C04);

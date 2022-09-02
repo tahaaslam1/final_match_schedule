@@ -1,63 +1,53 @@
-import 'package:final_match_schedule/constants.dart';
-import 'package:final_match_schedule/presentation/screens/home_screen/local_widgets/date_card.dart';
-import 'package:final_match_schedule/presentation/screens/home_screen/local_widgets/match_list.dart';
-import 'package:final_match_schedule/presentation/screens/home_screen/local_widgets/side_bar.dart';
+import 'package:final_match_schedule/data/tounament_data.dart';
+import 'package:final_match_schedule/styles.dart';
+import 'package:final_match_schedule/presentation/widgets/date_card.dart';
+import 'package:final_match_schedule/presentation/widgets/match_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
+    TournamentData matchData = TournamentData();
+    final matches = matchData.getMatchData();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Styles.backgroundColor,
-        body: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Row(
-                //TODO : yahan bhi listview.builder chayiee.. for SideBar.....
-                children: [
-                  Expanded(
-                    child: Column(
-                      //TODO : YAHAN is colunm ka children listview.builder ......
-                      children: [
-                        Row(
-                          children: [
-                            DateCard(
-                              matchDateTime: DateTime.now(),
-                            ),
-                            const MatchList(
-                              matches: [],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            DateCard(
-                              matchDateTime: DateTime.now(),
-                            ),
-                            const MatchList(
-                              matches: [],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            DateCard(
-                              matchDateTime: DateTime.now(),
-                            ),
-                            const MatchList(
-                              matches: [],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SideBar(),
-                ],
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: matches.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DateCard(
+                            matchDateTime: matches[index].matchDateTime,
+                          ),
+                          MatchList(
+                            matches: matches,
+                          ),
+                          //  const SideBar(),
+                          Container(                  //TODO : Removing this ,  listview is building OK, but with this not ..
+                            width: 35.w,
+                            height: MediaQuery.of(context).size.height,
+                            color: Colors.amber,
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],

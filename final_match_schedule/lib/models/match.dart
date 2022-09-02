@@ -13,13 +13,13 @@ class Match {
   final int matchId;
   final DateTime matchDateTime;
   final Country homeTeam;
-  final Country awayTeam;
+  final Country? awayTeam;
   final TournamentStage tournamentStage;
 
   Match({
     required this.matchDateTime,
     required this.homeTeam,
-    required this.awayTeam,
+    this.awayTeam,
     required this.matchId,
     required this.tournamentStage,
   });

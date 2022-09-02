@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:final_match_schedule/constants.dart';
+import 'package:final_match_schedule/styles.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({
@@ -12,6 +12,7 @@ class SideBar extends StatelessWidget {
     return Container(
       color: Styles.sideBarBackgroundColor,
       width: 35.0.w,
+      height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           SizedBox(height: 8.0.h),
@@ -34,7 +35,12 @@ class SideBar extends StatelessWidget {
           Expanded(
             child: Container(
               width: 6.0.w,
-              color: Styles.sideBarLineColor,
+              decoration: BoxDecoration(
+                color: Styles.sideBarLineColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(2.r),
+                ),
+              ),
             ),
           ),
         ],

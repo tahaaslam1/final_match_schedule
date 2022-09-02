@@ -1,4 +1,4 @@
-import 'package:final_match_schedule/constants.dart';
+import 'package:final_match_schedule/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,8 +12,8 @@ class DateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70.h,
-      width: 71.w,
+      height: 71.h,
+      width: 74.w,
       decoration: BoxDecoration(
         border: Border(
           right: BorderSide(
@@ -32,14 +32,15 @@ class DateCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Пн',
+              //'Пн',
+              '${matchDateTime.day}',
               style: Styles.dateCardTextStyle,
             ),
             SizedBox(
               height: 5.0.h,
             ),
             Text(
-              '21.11.22',
+             '21.11.22',
               style: Styles.dateCardTextStyle,
             ),
           ],

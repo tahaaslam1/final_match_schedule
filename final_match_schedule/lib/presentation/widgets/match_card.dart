@@ -1,4 +1,4 @@
-import 'package:final_match_schedule/constants.dart';
+import 'package:final_match_schedule/styles.dart';
 import 'package:final_match_schedule/models/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +40,7 @@ class MatchCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+            padding: EdgeInsets.only(left : 4.0.w,top : 2.h),
             child: Text(
               matchGroup.name,
               style: TextStyle(
