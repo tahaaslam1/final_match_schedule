@@ -2,8 +2,10 @@ import 'package:final_match_schedule/data/tounament_data.dart';
 import 'package:final_match_schedule/styles.dart';
 import 'package:final_match_schedule/presentation/widgets/date_card.dart';
 import 'package:final_match_schedule/presentation/widgets/match_list.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:final_match_schedule/presentation/widgets/side_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:final_match_schedule/models/match.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,41 +15,92 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final ScrollController listViewControllerOne, listViewControllerTwo;
+
+  late final List<Match> matches;
+
+  late final TournamentData matchData;
+
+  List<Match> removeMatchDuplicates(List<Match> matches) {
+    Set matcheSet = {};
+    List<Match> unique = matches
+        .where((element) => matcheSet.add(element.matchDateTime.day))
+        .toList();
+
+    return unique;
+  }
+
+  @override
+  void initState() {
+    listViewControllerOne = ScrollController();
+    listViewControllerTwo = ScrollController();
+    matchData = TournamentData();
+
+    listViewControllerOne.addListener(() {
+      listViewControllerTwo.jumpTo(listViewControllerOne.offset);
+    });
+
+    matches = removeMatchDuplicates(matchData.getMatchData());
+
+    // for(int i =0; i < matches.length ; ++i ){
+    //   print(matches[i].matchDateTime.day);
+    // }
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    listViewControllerOne.dispose();
+    listViewControllerTwo.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    TournamentData matchData = TournamentData();
-    final matches = matchData.getMatchData();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Styles.backgroundColor,
         body: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: matches.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          DateCard(
-                            matchDateTime: matches[index].matchDateTime,
-                          ),
-                          MatchList(
-                            matches: matches,
-                          ),
-                          //  const SideBar(),
-                          Container(                  //TODO : Removing this ,  listview is building OK, but with this not ..
-                            width: 35.w,
-                            height: MediaQuery.of(context).size.height,
-                            color: Colors.amber,
-                          ),
-                        ],
-                      ),
-                    ],
-                  );
-                },
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 325.w,
+                    child: ListView.builder(
+                      controller: listViewControllerOne,
+                      // primary: false,
+                      itemCount: matches.length,
+                      itemBuilder: (context, index) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DateCard(
+                              matchDateTime: matches[index].matchDateTime,
+                            ),
+                            MatchList(
+                              matchDateTime: matches[index].matchDateTime,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: 35.w,
+                    child: ListView.builder(
+                      primary: false,
+                      controller: listViewControllerTwo,
+                      shrinkWrap: true,
+                      itemCount: matches.length,
+                      itemBuilder: (context, index) {
+                        return const SideBar();
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

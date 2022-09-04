@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchCard extends StatelessWidget {
-  final Group matchGroup;
+  final Group? group;
   final String homeTeam;
   final String awayTeam;
   final DateTime matchTime;
@@ -13,12 +13,13 @@ class MatchCard extends StatelessWidget {
     Key? key,
     required this.awayTeam,
     required this.homeTeam,
-    required this.matchGroup,
+    required this.group,
     required this.matchTime,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //TODO : check if group then build widget tree..
     return Container(
       height: 52.h,
       width: 70.w,
@@ -42,7 +43,7 @@ class MatchCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left : 4.0.w,top : 2.h),
             child: Text(
-              matchGroup.name,
+              group!.name,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 12.sp,

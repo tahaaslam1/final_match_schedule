@@ -1,12 +1,13 @@
 import 'package:final_match_schedule/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class DateCard extends StatelessWidget {
-
-  final DateTime matchDateTime; 
+  final DateTime matchDateTime;
   const DateCard({
-    Key? key, required this.matchDateTime,
+    Key? key,
+    required this.matchDateTime,
   }) : super(key: key);
 
   @override
@@ -32,15 +33,15 @@ class DateCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              //'Пн',
-              '${matchDateTime.day}',
+              'Пн',
+              //'${matchDateTime.day}',
               style: Styles.dateCardTextStyle,
             ),
             SizedBox(
               height: 5.0.h,
             ),
             Text(
-             '21.11.22',
+              DateFormat('yMMMMd').format(matchDateTime),
               style: Styles.dateCardTextStyle,
             ),
           ],
