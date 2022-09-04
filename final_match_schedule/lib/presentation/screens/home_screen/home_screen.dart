@@ -22,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late final TournamentData matchData;
 
   List<Match> removeMatchDuplicates(List<Match> matches) {
+    print('matches length : ${matches.length} ');
+
     Set matcheSet = {};
     List<Match> unique = matches
         .where((element) => matcheSet.add(element.matchDateTime.day))
@@ -42,10 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     matches = removeMatchDuplicates(matchData.getMatchData());
 
-    // for(int i =0; i < matches.length ; ++i ){
-    //   print(matches[i].matchDateTime.day);
+    // for (int i = 0; i < matches.length; ++i) {
+    //   print('step $i : ${matches[i].matchDateTime.day}');
     // }
-
     super.initState();
   }
 
@@ -71,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 325.w,
                     child: ListView.builder(
                       controller: listViewControllerOne,
-                      // primary: false,
                       itemCount: matches.length,
                       itemBuilder: (context, index) {
                         return Row(
