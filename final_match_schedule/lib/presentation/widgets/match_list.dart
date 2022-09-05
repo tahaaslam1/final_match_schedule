@@ -7,6 +7,8 @@ import 'package:final_match_schedule/presentation/widgets/match_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
+
 class MatchList extends StatefulWidget {
   final DateTime matchDateTime;
 
@@ -66,7 +68,7 @@ class _MatchListState extends State<MatchList> {
             children: [
               MatchCard(
                 awayTeam: newMatchList[index].awayTeam!.countryName,
-                homeTeam: newMatchList[index].homeTeam!.countryName,
+                homeTeam: newMatchList[index].homeTeam?.countryName,
                 group: newMatchList[index].awayTeam!.countryGroup,
                 matchTime: newMatchList[index].matchDateTime,
                 tournamentStage: newMatchList[index].tournamentStage,

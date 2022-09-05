@@ -822,10 +822,10 @@ class TournamentData {
         matchDateTime: DateTime.utc(2022, DateTime.december, 17, 18, 00, 00),
         tournamentStage: TournamentStage.thirdPlace,
         homeTeam: Country(
-          countryName: '3rd Place',
+          countryName: '  3rd\nPlace',
         ),
         awayTeam: Country(
-          countryName: '3rd Place',
+          countryName: '  3rd\nPlace',
         ),
       ),
       Match(

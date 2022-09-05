@@ -3,10 +3,11 @@ import 'package:final_match_schedule/styles.dart';
 import 'package:final_match_schedule/models/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class MatchCard extends StatelessWidget {
   final Group? group;
-  final String homeTeam;
+  final String? homeTeam;
   final String awayTeam;
   final DateTime matchTime;
   final TournamentStage tournamentStage;
@@ -59,7 +60,7 @@ class MatchCard extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      homeTeam.toString(),
+                      homeTeam!,
                       style: TextStyle(
                           fontWeight: FontWeight.w700, fontSize: 10.sp),
                     ),
@@ -83,7 +84,7 @@ class MatchCard extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  matchTime.hour.toString(),
+                  DateFormat('Hm').format(matchTime),
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                 ),
@@ -121,7 +122,7 @@ class MatchCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  homeTeam.toString(),
+                  homeTeam!,
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                 ),
@@ -143,7 +144,7 @@ class MatchCard extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  matchTime.hour.toString(),
+                  DateFormat('Hm').format(matchTime),
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                 ),
@@ -181,7 +182,7 @@ class MatchCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  homeTeam,
+                  homeTeam!,
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                 ),
@@ -193,7 +194,7 @@ class MatchCard extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  matchTime.hour.toString(),
+                  DateFormat('Hm').format(matchTime),
                   style:
                       TextStyle(fontWeight: FontWeight.w700, fontSize: 10.sp),
                 ),

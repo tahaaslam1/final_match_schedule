@@ -1,3 +1,4 @@
+import 'package:final_match_schedule/services/helper_service.dart';
 import 'package:final_match_schedule/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +13,7 @@ class DateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HelperService helperService = HelperService();
     return Container(
       height: 71.h,
       width: 74.w,
@@ -33,15 +35,16 @@ class DateCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              //'Пн',
-              '${matchDateTime.day}',
+              helperService.localizeDays(
+                DateFormat(DateFormat.ABBR_WEEKDAY).format(matchDateTime),
+              ),
               style: Styles.dateCardTextStyle,
             ),
             SizedBox(
               height: 5.0.h,
             ),
             Text(
-              DateFormat('yMMMMd').format(matchDateTime),
+              DateFormat('dd.MM.yy').format(matchDateTime),
               style: Styles.dateCardTextStyle,
             ),
           ],

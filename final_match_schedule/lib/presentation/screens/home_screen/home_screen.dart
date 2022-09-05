@@ -83,19 +83,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  Container(
                     width: 35.w,
-                    child: ListView.builder(
-                      //physics: const NeverScrollableScrollPhysics(),
-                      //primary: false,
+                    color: Styles.sideBarBackgroundColor,
+                    child: ListView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      primary: false,
                       controller: listViewControllerTwo,
                       shrinkWrap: true,
-                      itemCount: matches.length,
-                      itemBuilder: (context, index) {
-                        return SideBar(
-                          tournamentStage: matches[index].tournamentStage,
-                        );
-                      },
+                      children: const [
+                        SideBar(tournamentStage: TournamentStage.groupMatches),
+                        SideBar(tournamentStage: TournamentStage.roundOf16),
+                        SideBar(tournamentStage: TournamentStage.restDay),
+                        SideBar(tournamentStage: TournamentStage.quaterFinals),
+                        SideBar(tournamentStage: TournamentStage.restDay),
+                        SideBar(tournamentStage: TournamentStage.semiFinals),
+                        SideBar(tournamentStage: TournamentStage.restDay),
+                        SideBar(tournamentStage: TournamentStage.finalMatch),
+                      ],
                     ),
                   ),
                 ],

@@ -1,4 +1,5 @@
 import 'package:final_match_schedule/models/match.dart';
+import 'package:final_match_schedule/services/helper_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:final_match_schedule/styles.dart';
@@ -13,10 +14,11 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HelperService helperService = HelperService();
     return Container(
       color: Styles.sideBarBackgroundColor,
       width: 35.0.w,
-      height: MediaQuery.of(context).size.height,
+      height: helperService.convertEnumToHeight(tournamentStage),
       child: Column(
         children: [
           SizedBox(height: 8.0.h),
@@ -24,7 +26,7 @@ class SideBar extends StatelessWidget {
             quarterTurns: 1,
             child: RichText(
               text: TextSpan(
-                text: 'Taha Aslam',
+                text: helperService.convertEnumToName(tournamentStage),
                 style: TextStyle(
                   color: Styles.secondaryTextColor,
                   fontSize: 14.sp,
