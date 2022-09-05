@@ -1,13 +1,10 @@
 import 'package:final_match_schedule/presentation/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/date_symbol_data_file.dart';
-import 'package:final_match_schedule/presentation/widgets/date_card.dart';
 
 void main() {
-  runApp(
-    const FinalMatchSchedule(),
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const FinalMatchSchedule());
 }
 
 class FinalMatchSchedule extends StatelessWidget {
@@ -18,7 +15,7 @@ class FinalMatchSchedule extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 640),
       builder: (context, child) {
-        return  const MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Final Match Schedule',
           home: HomeScreen(),

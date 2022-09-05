@@ -65,22 +65,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   SizedBox(
                     width: 325.w,
-                    child: ListView.builder(
-                      controller: listViewControllerOne,
-                      itemCount: matches.length,
-                      itemBuilder: (context, index) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DateCard(
-                              matchDateTime: matches[index].matchDateTime,
-                            ),
-                            MatchList(
-                              matchDateTime: matches[index].matchDateTime,
-                            ),
-                          ],
-                        );
-                      },
+                    child: GlowingOverscrollIndicator(
+                      color: Styles.gridLineColor,
+                      axisDirection: AxisDirection.down,
+                      child: ListView.builder(
+                        controller: listViewControllerOne,
+                        itemCount: matches.length,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DateCard(
+                                matchDateTime: matches[index].matchDateTime,
+                              ),
+                              MatchList(
+                                matchDateTime: matches[index].matchDateTime,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                   Container(
