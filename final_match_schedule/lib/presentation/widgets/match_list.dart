@@ -7,7 +7,7 @@ import 'package:final_match_schedule/presentation/widgets/match_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MatchList extends StatelessWidget {
+class MatchList extends StatefulWidget {
   final DateTime matchDateTime;
 
   const MatchList({
@@ -16,21 +16,38 @@ class MatchList extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<MatchList> createState() => _MatchListState();
+}
+
+class _MatchListState extends State<MatchList> {
+  late TournamentData matchData;
+  late List<Match> matches;
+  late List<Match> newMatchList;
+
+  List<Match> generateNewList(List<Match> matches, DateTime matchDateTime) {
+    List<Match> newMatchList = [];
+
+    for (int i = 0; i < matches.length; ++i) {
+      if ((matches[i].matchDateTime.day == matchDateTime.day) &&
+          (matches[i].homeTeam != null)) {
+        newMatchList.add(matches[i]);
+      }
+    }
+    return newMatchList;
+  }
+
+  @override
+  void initState() {
+    matchData = TournamentData();
+
+    matches = matchData.getMatchData();
+
+    newMatchList = generateNewList(matches, widget.matchDateTime);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // TournamentData matchData = TournamentData();
-    // final matches = matchData.getMatchData();
-
-    // int generateItemCount(List<Match> matches, DateTime matchDateTime) {
-    //   int itemCount = 0;
-    //   for (int i = 0; i < matches.length; ++i) {
-    //     if (matches[i].matchDateTime.day == matchDateTime.day) {
-    //       itemCount++;
-    //     }
-    //   }
-    //   return itemCount;
-    // }
-
-    logger.d('matchDateTime Match List : ${matchDateTime.day}');
     return Container(
       height: 71.h,
       width: 251.w,
@@ -43,16 +60,17 @@ class MatchList extends StatelessWidget {
         ),
       ),
       child: ListView.builder(
-        itemCount: 2, //generateItemCount(matches, matchDateTime),
+        itemCount: newMatchList.length,
         itemBuilder: (context, index) {
           return Row(
             children: [
-              // MatchCard(
-              //   awayTeam: matches[index].awayTeam!.countryName,
-              //   homeTeam: matches[index].homeTeam!.countryName,
-              //   group: matches[index].awayTeam!.countryGroup,
-              //   matchTime: DateTime.now(),
-              // ),
+              MatchCard(
+                awayTeam: newMatchList[index].awayTeam!.countryName,
+                homeTeam: newMatchList[index].homeTeam!.countryName,
+                group: newMatchList[index].awayTeam!.countryGroup,
+                matchTime: newMatchList[index].matchDateTime,
+                tournamentStage: newMatchList[index].tournamentStage,
+              ),
               SizedBox(
                 width: 10.0.w,
               ),

@@ -1,4 +1,4 @@
-package com.example.final_match_schedule
+package com.cup22shedule.ofmatches
 
 import io.flutter.embedding.android.FlutterActivity
 

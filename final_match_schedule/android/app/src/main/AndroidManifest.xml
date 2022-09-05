@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.final_match_schedule">
+    package="com.cup22shedule.ofmatches">
    <application
-        android:label="final_match_schedule"
+        android:label="Final Match Schedule"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

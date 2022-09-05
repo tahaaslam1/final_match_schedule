@@ -6,7 +6,8 @@ enum TournamentStage {
   quaterFinals,
   semiFinals,
   thirdPlace,
-  finalMatch
+  finalMatch,
+  restDay
 }
 
 class Match {
@@ -14,13 +15,13 @@ class Match {
   final DateTime matchDateTime;
   final Country? homeTeam;
   final Country? awayTeam;
-  final TournamentStage? tournamentStage;
+  final TournamentStage tournamentStage;
 
   Match({
     required this.matchDateTime,
     this.homeTeam,
     this.awayTeam,
     required this.matchId,
-    this.tournamentStage,
+    required this.tournamentStage,
   });
 }

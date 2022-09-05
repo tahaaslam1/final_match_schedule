@@ -724,10 +724,12 @@ class TournamentData {
       Match(
         matchId: 57,
         matchDateTime: DateTime.utc(2022, DateTime.december, 7, 11, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 58,
         matchDateTime: DateTime.utc(2022, DateTime.december, 8, 12, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 59,
@@ -776,10 +778,12 @@ class TournamentData {
       Match(
         matchId: 63,
         matchDateTime: DateTime.utc(2022, DateTime.december, 11, 13, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 64,
         matchDateTime: DateTime.utc(2022, DateTime.december, 12, 14, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 65,
@@ -806,10 +810,12 @@ class TournamentData {
       Match(
         matchId: 67,
         matchDateTime: DateTime.utc(2022, DateTime.december, 15, 15, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 68,
         matchDateTime: DateTime.utc(2022, DateTime.december, 16, 16, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
       Match(
         matchId: 69,
@@ -818,18 +824,25 @@ class TournamentData {
         homeTeam: Country(
           countryName: '3rd Place',
         ),
+        awayTeam: Country(
+          countryName: '3rd Place',
+        ),
       ),
       Match(
         matchId: 70,
         matchDateTime: DateTime.utc(2022, DateTime.december, 18, 18, 00, 00),
-        tournamentStage: TournamentStage.thirdPlace,
+        tournamentStage: TournamentStage.finalMatch,
         homeTeam: Country(
+          countryName: 'Final',
+        ),
+        awayTeam: Country(
           countryName: 'Final',
         ),
       ),
       Match(
         matchId: 71,
         matchDateTime: DateTime.utc(2022, DateTime.december, 19, 17, 00, 00),
+        tournamentStage: TournamentStage.restDay,
       ),
     ],
   );

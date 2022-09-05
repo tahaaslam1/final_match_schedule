@@ -1,4 +1,3 @@
-import 'package:final_match_schedule/logger.dart';
 import 'package:final_match_schedule/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +12,6 @@ class DateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logger.d('matchDateTime DateCard : ${matchDateTime}');
-
     return Container(
       height: 71.h,
       width: 74.w,

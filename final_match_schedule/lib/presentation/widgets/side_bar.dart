@@ -1,10 +1,14 @@
+import 'package:final_match_schedule/models/match.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:final_match_schedule/styles.dart';
 
 class SideBar extends StatelessWidget {
+  final TournamentStage tournamentStage;
+
   const SideBar({
     Key? key,
+    required this.tournamentStage,
   }) : super(key: key);
 
   @override
